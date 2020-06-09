@@ -15,17 +15,15 @@ public class AudioRecorder {
 
     public void capture(){
         try {
-
             audioFormat = getAudioFormat();
             DataLine.Info dataLineInfo = new DataLine.Info(TargetDataLine.class, audioFormat);
             targetDataLine = (TargetDataLine)AudioSystem.getLine(dataLineInfo);
-            targetDataLine.open(audioFormat);
+            targetDataLine.open(audioFormat, targetDataLine.getBufferSize());
             targetDataLine.start();
 
             Record record = new Record();
             thread1 = new Thread(record);
             thread1.start();
-
         }catch (Exception e){
             e.printStackTrace();
             System.exit(1);
@@ -33,7 +31,28 @@ public class AudioRecorder {
     }
 
     public void stopRecord(){
-        stopRecordFlag = true;
+        //stopRecordFlag = true;
+        thread1 = null;
+    }
+
+    public void pauseRecord(){
+        targetDataLine.stop();
+    }
+
+    public void resumeRecord(){
+        targetDataLine.start();
+    }
+
+    public void stopPlay(){
+        thread2 = null;
+    }
+
+    public void pausePlay(){
+        sourceDataLine.stop();
+    }
+
+    public void resumePlay(){
+        sourceDataLine.start();
     }
 
     public void play(){
@@ -112,12 +131,12 @@ public class AudioRecorder {
         public void run(){
             baos = new ByteArrayOutputStream();
             try {
-                stopRecordFlag = false;
-                while (!stopRecordFlag){
-                    System.out.print("錄了"+(System.currentTimeMillis()-startRecordTime)*0.001+"秒！\r");
-                    int cnt = targetDataLine.read(data, 0, data.length);
-                    if(cnt > 0) {
-                        baos.write(data, 0, cnt);
+                //stopRecordFlag = false;
+                while (thread1!=null) {
+                    //System.out.print("錄了"+(System.currentTimeMillis()-startRecordTime)*0.001+"秒！\r");
+                    int numBytesRead = targetDataLine.read(data, 0, data.length);
+                    if (numBytesRead > 0) {
+                        baos.write(data, 0, numBytesRead);
                         //System.out.println(cnt);
                     }
                 }
@@ -141,20 +160,23 @@ public class AudioRecorder {
         //播放baos中的數據
         public void run(){
             byte[] data = new byte[10000];
-            try {
-                int cnt;
-                while ((cnt = audioInputStream.read(data, 0, data.length)) != -1) {
-                    if (cnt > 0) {
-                        sourceDataLine.write(data, 0, cnt);
+            while (thread2!=null) {
+                try {
+                    int numBytesRead = 0;
+                    if ((numBytesRead = audioInputStream.read(data, 0, data.length)) == -1)
+                        break;
+                    int numBytesRemaining = numBytesRead;
+                    while (numBytesRemaining > 0) {
+                        numBytesRemaining -= sourceDataLine.write(data, 0, numBytesRemaining);
                         //System.out.println(cnt);
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    break;
                 }
-            }catch (Exception e){
-                e.printStackTrace();
-            }finally {
-                sourceDataLine.stop();
-                sourceDataLine.close();
             }
+            sourceDataLine.stop();
+            sourceDataLine.close();
         }
     }
 }
