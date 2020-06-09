@@ -11,7 +11,6 @@ public class AudioRecorder {
     ByteArrayOutputStream baos;
     Thread thread1;
     Thread thread2;
-    Boolean stopRecordFlag = false;
 
     public void capture(){
         try {
