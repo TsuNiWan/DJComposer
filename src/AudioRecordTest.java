@@ -9,7 +9,7 @@ public class AudioRecordTest {
             System.out.println("t:播放錄音 y:暫停播放 u:繼續播放 i:停止播放 f:存檔:");
             String choice = input.next();
             if(choice.equals("q")) {
-                System.out.println("-------------Recording-------------");
+                System.out.println("-------------Start Recording-------------");
                 recorder.capture();
             }
             if(choice.equals("w")) {
@@ -25,7 +25,7 @@ public class AudioRecordTest {
                 recorder.stopRecord();
             }
             if(choice.equals("t")) {
-                System.out.println("-------------Playing-------------");
+                System.out.println("-------------Start Playing-------------");
                 recorder.play();
             }
             if(choice.equals("y")) {
