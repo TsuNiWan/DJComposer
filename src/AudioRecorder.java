@@ -31,7 +31,6 @@ public class AudioRecorder {
     }
 
     public void stopRecord(){
-        //stopRecordFlag = true;
         thread1 = null;
     }
 
@@ -125,19 +124,18 @@ public class AudioRecorder {
     }
 
     class Record implements Runnable{
-        byte[] data = new byte[10000];
-        long startRecordTime = System.currentTimeMillis();
+        byte[] data = new byte[16384];
+        //long startRecordTime = System.currentTimeMillis();
 
         public void run(){
             baos = new ByteArrayOutputStream();
             try {
-                //stopRecordFlag = false;
                 while (thread1!=null) {
                     //System.out.print("錄了"+(System.currentTimeMillis()-startRecordTime)*0.001+"秒！\r");
                     int numBytesRead = targetDataLine.read(data, 0, data.length);
                     if (numBytesRead > 0) {
                         baos.write(data, 0, numBytesRead);
-                        //System.out.println(cnt);
+                        //System.out.println(numBytesRead);
                     }
                 }
             }catch (Exception e){
@@ -159,7 +157,7 @@ public class AudioRecorder {
     class Play implements Runnable{
         //播放baos中的數據
         public void run(){
-            byte[] data = new byte[10000];
+            byte[] data = new byte[16384];
             while (thread2!=null) {
                 try {
                     int numBytesRead = 0;
