@@ -1,3 +1,54 @@
-public class MainGUI {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+public class MainGUI extends JFrame {
+    JPanel tabBar;
+    JButton[] tabButton = new JButton[3];
+    String[] tabButtonText = {"首頁", "錄音", "編曲"};
+    JPanel home;
+    JLabel title;
+    AudioRecorderPanel record;
+
+    public MainGUI() {
+        super("DJcomposer");
+        setLayout(new BorderLayout());
+
+        tabBar = new JPanel(new GridLayout(3, 1));
+        for (int i = 0; i < tabButton.length; i++) {
+            tabButton[i] = new JButton(tabButtonText[i]);
+            tabBar.add(tabButton[i]);
+            tabButton[i].addActionListener(new MyListener());
+        }
+
+        home = new JPanel(new FlowLayout());
+        title = new JLabel("DJComposer");
+        home.add(title);
+
+        record = new AudioRecorderPanel();
+
+        add(tabBar, BorderLayout.WEST);
+        add(home, BorderLayout.CENTER);
+
+    }
+
+    private class MyListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == tabButton[0]) {
+                add(home, BorderLayout.CENTER);
+                home.setVisible(true);
+                record.setVisible(false);
+            } else if (e.getSource() == tabButton[1]) {
+                add(record, BorderLayout.CENTER);
+                home.setVisible(false);
+                record.setVisible(true);
+            } else if (e.getSource() == tabButton[2]) {
+                System.out.println("2");
+                home.setVisible(false);
+                record.setVisible(false);
+            }
+        }
+    }
 }
