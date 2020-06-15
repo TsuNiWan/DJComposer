@@ -27,8 +27,8 @@ public class TrackPanel extends JLabel{
             }else {
                 setBackground(Color.YELLOW);
             }
-            System.out.println((activate)?"True":"False");
             activate = !activate;
+            System.out.println((activate)?"True":"False");
         }
 
         @Override

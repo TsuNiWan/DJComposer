@@ -4,10 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AudioRecorderPanel extends JPanel {
+    private ImageIcon mic = new ImageIcon(new ImageIcon(getClass().getResource("microphone-solid.png")).getImage().getScaledInstance(22, 32, Image.SCALE_DEFAULT));
+    private ImageIcon play = new ImageIcon(new ImageIcon(getClass().getResource("play-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+    private ImageIcon pause = new ImageIcon(new ImageIcon(getClass().getResource("pause-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+    private ImageIcon stop = new ImageIcon(new ImageIcon(getClass().getResource("stop-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+    private ImageIcon save = new ImageIcon(new ImageIcon(getClass().getResource("save-regular.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+
     JButton[] recorderButton = new JButton[4];
     JButton[] playerButton = new JButton[4];
-    String[] recorderButtonText = {"開始", "暫停", "繼續", "停止"};
-    String[] playerButtonText = {"開始", "暫停", "繼續", "停止"};
+    ImageIcon[] recorderButtonText = {mic, pause, play, stop};
+    ImageIcon[] playerButtonText = {mic, pause, play, stop};
     JLabel bar;
     JLabel recordLabel;
     JPanel record;
@@ -18,6 +24,7 @@ public class AudioRecorderPanel extends JPanel {
     JTextField fileName;
     JButton saveFile;
     AudioRecorder recorder;
+
 
     public AudioRecorderPanel() {
         recorder = new AudioRecorder();
@@ -53,7 +60,7 @@ public class AudioRecorderPanel extends JPanel {
         file.add(fileLabel);
         fileName = new JTextField("Default");
         file.add(fileName);
-        saveFile = new JButton("存檔");
+        saveFile = new JButton(save);
         saveFile.addActionListener(new MyListener());
         file.add(saveFile);
         add(file);
