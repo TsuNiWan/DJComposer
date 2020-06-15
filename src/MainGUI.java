@@ -10,6 +10,7 @@ public class MainGUI extends JFrame {
     JPanel home;
     JLabel title;
     AudioRecorderPanel record;
+    MusicMakerPanel maker;
 
     public MainGUI() {
         super("DJcomposer");
@@ -28,6 +29,8 @@ public class MainGUI extends JFrame {
 
         record = new AudioRecorderPanel();
 
+        maker = new MusicMakerPanel();
+
         add(tabBar, BorderLayout.WEST);
         add(home, BorderLayout.CENTER);
 
@@ -40,14 +43,17 @@ public class MainGUI extends JFrame {
                 add(home, BorderLayout.CENTER);
                 home.setVisible(true);
                 record.setVisible(false);
+                maker.setVisible(false);
             } else if (e.getSource() == tabButton[1]) {
                 add(record, BorderLayout.CENTER);
                 home.setVisible(false);
                 record.setVisible(true);
+                maker.setVisible(false);
             } else if (e.getSource() == tabButton[2]) {
-                System.out.println("2");
+                add(maker, BorderLayout.CENTER);
                 home.setVisible(false);
                 record.setVisible(false);
+                maker.setVisible(true);
             }
         }
     }
