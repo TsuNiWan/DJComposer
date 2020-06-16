@@ -1,7 +1,4 @@
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.SystemColor;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -12,6 +9,7 @@ import java.io.FileReader;
 import java.io.OutputStream;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,6 +17,9 @@ import javax.swing.event.ChangeListener;
 import com.google.gson.Gson;
 
 public class ComposerGUI extends JFrame{
+    private ImageIcon play = new ImageIcon(new ImageIcon(getClass().getResource("play-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+    private ImageIcon stop = new ImageIcon(new ImageIcon(getClass().getResource("stop-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+
     protected static final String String = null;
     private JPanel contentPane;
     private MusicConverter converter;
@@ -42,13 +43,15 @@ public class ComposerGUI extends JFrame{
     }
 
     public ComposerGUI() {
+        super("DJComposer");
+
+        Border border = BorderFactory.createLineBorder(Color.gray, 3);
 
         panelMain = new JPanel();
         getContentPane().add(panelMain);
 
-        setTitle("DJComposer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1600, 920);
+        setBounds(100, 100, 1150, 550);
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -63,7 +66,6 @@ public class ComposerGUI extends JFrame{
         JMenuItem mntmNew = new JMenuItem("NEW");
         mnFile.add(mntmNew);
         mntmNew.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 new newFileFrame(listModel);
@@ -111,15 +113,17 @@ public class ComposerGUI extends JFrame{
         JPanel panelTop = new JPanel();
         panelTop.setBackground(SystemColor.controlDkShadow);
         panelTop.setBounds(220, 0, 1374, 46);
+        panelTop.setOpaque(true);
+        panelTop.setBackground(Color.gray);
         contentPane.add(panelTop);
         panelTop.setLayout(null);
 
-        JButton btnPlay = new JButton("\u25B6");
-        btnPlay.setBackground(Color.DARK_GRAY);
-        btnPlay.setForeground(new Color(154, 205, 50));
+        JButton btnPlay = new JButton(play);
+        btnPlay.setOpaque(true);
+        btnPlay.setBorder(border);
+        btnPlay.setBackground(Color.white);
         btnPlay.setBounds(0, 0, 46, 46);
         btnPlay.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 playMusicBt = new MusicPlayFrame(converter);
@@ -128,9 +132,10 @@ public class ComposerGUI extends JFrame{
 
         panelTop.add(btnPlay);
 
-        JButton btnStop = new JButton("\u25A0");
-        btnStop.setBackground(Color.DARK_GRAY);
-        btnStop.setForeground(new Color(154, 205, 50));
+        JButton btnStop = new JButton(stop);
+        btnStop.setOpaque(true);
+        btnStop.setBorder(border);
+        btnStop.setBackground(Color.white);
         btnStop.setBounds(49, 0, 46, 46);
         btnStop.addActionListener(new ActionListener() {
 
@@ -161,10 +166,10 @@ public class ComposerGUI extends JFrame{
 
         JComboBox cmbTrack = new JComboBox();
         cmbTrack.setFont(new Font("Arial", Font.BOLD, 17));
-        cmbTrack.setBounds(367, 0, 105, 46);
+        cmbTrack.setBounds(320, 0, 105, 46);
         panelTop.add(cmbTrack);
 
-        JButton btnAddTrack = new JButton("AddTrack");
+        JButton btnAddTrack = new JButton("新增音軌");
         btnAddTrack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
@@ -181,10 +186,10 @@ public class ComposerGUI extends JFrame{
         btnAddTrack.setFont(new Font("Arial", Font.BOLD, 14));
         btnAddTrack.setForeground(Color.BLACK);
         btnAddTrack.setBackground(Color.WHITE);
-        btnAddTrack.setBounds(635, -1, 105, 46);
+        btnAddTrack.setBounds(530, -1, 100, 46);
         panelTop.add(btnAddTrack);
 
-        JButton btnRemovetrack = new JButton("RemoveTrack");
+        JButton btnRemovetrack = new JButton("刪除音軌");
         btnRemovetrack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!(cmbTrack.getSelectedItem().toString().equals("---"))) {
@@ -204,7 +209,7 @@ public class ComposerGUI extends JFrame{
         btnRemovetrack.setForeground(Color.BLACK);
         btnRemovetrack.setFont(new Font("Arial", Font.BOLD, 14));
         btnRemovetrack.setBackground(Color.WHITE);
-        btnRemovetrack.setBounds(752, -1, 141, 46);
+        btnRemovetrack.setBounds(630, -1, 100, 46);
         panelTop.add(btnRemovetrack);
 
         JLabel lblBpm = new JLabel("BPM");
@@ -213,13 +218,13 @@ public class ComposerGUI extends JFrame{
         lblBpm.setBounds(107, 12, 39, 21);
         panelTop.add(lblBpm);
 
-        JLabel lblTrack = new JLabel("Track");
+        JLabel lblTrack = new JLabel("音軌");
         lblTrack.setForeground(Color.WHITE);
         lblTrack.setFont(new Font("Arial", Font.BOLD, 12));
-        lblTrack.setBounds(329, 12, 39, 21);
+        lblTrack.setBounds(290, 12, 39, 21);
         panelTop.add(lblTrack);
 
-        JButton btnLoadTrack = new JButton("LoadTrack");
+        JButton btnLoadTrack = new JButton("讀取音軌");
         btnLoadTrack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 if (cmbTrack.getSelectedItem().equals("Drum")) {
@@ -243,14 +248,14 @@ public class ComposerGUI extends JFrame{
         btnLoadTrack.setForeground(Color.BLACK);
         btnLoadTrack.setFont(new Font("Arial", Font.BOLD, 14));
         btnLoadTrack.setBackground(Color.WHITE);
-        btnLoadTrack.setBounds(482, -1, 141, 46);
+        btnLoadTrack.setBounds(430, -1, 100, 46);
         panelTop.add(btnLoadTrack);
 
         JSpinner spinnerBar = new JSpinner();
         spinnerBar.setForeground(Color.WHITE);
         spinnerBar.setFont(new Font("Arial", Font.BOLD, 24));
         spinnerBar.setBackground(Color.DARK_GRAY);
-        spinnerBar.setBounds(973, 0, 132, 46);
+        spinnerBar.setBounds(770, 0, 132, 46);
         panelTop.add(spinnerBar);
         spinnerBar.addChangeListener(new ChangeListener() {
 
@@ -263,12 +268,12 @@ public class ComposerGUI extends JFrame{
         JLabel lblBar = new JLabel("Bar");
         lblBar.setForeground(Color.WHITE);
         lblBar.setFont(new Font("Arial", Font.BOLD, 12));
-        lblBar.setBounds(933, 12, 39, 21);
+        lblBar.setBounds(740, 12, 39, 21);
         panelTop.add(lblBar);
 
         JPanel panelFile = new JPanel();
-        panelFile.setBackground(Color.GRAY);
-        panelFile.setBounds(0, 0, 208, 850);
+        //panelFile.setBackground(Color.blue);
+        panelFile.setBounds(0, 0, 208, 500);
         contentPane.add(panelFile);
         panelFile.setLayout(null);
 
@@ -282,8 +287,9 @@ public class ComposerGUI extends JFrame{
         list = new JList(listModel);
         list.setForeground(Color.WHITE);
         list.setFont(new Font("Arial", Font.BOLD, 12));
+        list.setBorder(border);
         list.setBackground(Color.DARK_GRAY);
-        list.setBounds(6, 6, 196, 840);
+        list.setBounds(5, 5, 198, 490);
         panelFile.add(list);
         list.addMouseListener(new MouseListener() {
 

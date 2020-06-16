@@ -3,8 +3,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
+import javax.swing.border.Border;
 
 public class DrumNote extends JLabel{
 	private int currentValue = 0;
@@ -15,13 +15,16 @@ public class DrumNote extends JLabel{
 	private ImageIcon selected = new ImageIcon("Images/drumNoteSelected.png");
 	
 	public DrumNote(int x,int y,ArrayList<JLabel> lbNums) {
-		
+		Border border = BorderFactory.createLineBorder(Color.darkGray, 3);
+
 		this.x = x;
 		this.y = y;
 		this.lbNums = lbNums;
 		
-		setIcon(notSelected);
-		setBackground(Color.GRAY);
+		//setIcon(notSelected);
+		setOpaque(true);
+		setBackground(Color.cyan);
+		setBorder(border);
 		setBounds(x, y, 60, 60);
 		setSize(60,60);
 		addMouseListener(new EventListener());	
@@ -33,9 +36,11 @@ public class DrumNote extends JLabel{
 	public void setCurrentValue(int currentValue) {
 		this.currentValue = currentValue;
 		if(currentValue==1) {
-			setIcon(selected);
+			//setIcon(selected);
+			setBackground(Color.cyan);
 		}else {
-			setIcon(notSelected);
+			//setIcon(notSelected);
+			setBackground(Color.lightGray);
 		}
 	}
 
@@ -48,11 +53,13 @@ public class DrumNote extends JLabel{
 	class EventListener implements MouseListener{
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			if(currentValue == 0) {				
-				setIcon(selected);
+			if(currentValue == 0) {
+				//setIcon(selected);
+				setBackground(Color.cyan);
 				currentValue = 1;
 			}else {
-				setIcon(notSelected);
+				//setIcon(notSelected);
+				setBackground(Color.lightGray);
 				currentValue = 0;
 			}
 		}
@@ -60,8 +67,8 @@ public class DrumNote extends JLabel{
 		public void mouseEntered(MouseEvent e) {
 			for (JLabel b : lbNums) {
 				if(b.getX()==x) {
-					b.setBackground(Color.YELLOW);
-					b.setForeground(Color.RED);
+					b.setBackground(Color.white);
+					b.setForeground(Color.black);
 				}
 			}			
 		}

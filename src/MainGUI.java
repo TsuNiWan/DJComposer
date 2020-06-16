@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainGUI extends JFrame {
+    private ImageIcon icon = new ImageIcon(new ImageIcon(getClass().getResource("icon.png")).getImage().getScaledInstance(62, 64, Image.SCALE_DEFAULT));
+
     JPanel tabBar;
     JButton[] tabButton = new JButton[3];
     String[] tabButtonText = {"首頁", "錄音", "編曲"};
@@ -24,7 +26,8 @@ public class MainGUI extends JFrame {
         }
 
         home = new JPanel(new FlowLayout());
-        title = new JLabel("DJComposer");
+        title = new JLabel("DJComposer", icon, JLabel.LEADING);
+        title.setFont(new Font("Calibri", Font.PLAIN, 48));
         home.add(title);
 
         record = new AudioRecorderPanel();

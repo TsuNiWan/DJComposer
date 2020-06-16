@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class MusicMakerPanel extends JPanel {
@@ -15,7 +16,9 @@ public class MusicMakerPanel extends JPanel {
     public MusicMakerPanel() {
         setLayout(new BorderLayout());
 
-        bar = new JLabel("music maker");
+        bar = new JLabel("音樂創作");
+        bar.setFont(new Font("Calibri", Font.PLAIN, 32));
+        bar.setBorder(new EmptyBorder(10, 10, 20, 10));
         add(bar, BorderLayout.NORTH);
 
         musicalBar = new JPanel(new FlowLayout());
@@ -24,6 +27,7 @@ public class MusicMakerPanel extends JPanel {
         musicalBar.add(musical);
         add(musicalBar, BorderLayout.WEST);
 
+        /*
         dashboard = new JPanel(new FlowLayout());
         dashboard.setPreferredSize(new Dimension( 4500,250));
         beat = new TrackPanel[180];
@@ -37,5 +41,6 @@ public class MusicMakerPanel extends JPanel {
         dashboard.setAutoscrolls(true);
         dashboardScroll.setPreferredSize(new Dimension( 400,250));
         add(dashboardScroll, BorderLayout.CENTER);
+         */
     }
 }

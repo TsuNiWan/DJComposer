@@ -25,25 +25,25 @@ public class DrumPanel extends JPanel {
 	public DrumPanel(MusicConverter converter) {
 		this.converter = converter;
 		setBackground(Color.DARK_GRAY);
-		setBounds(220, 56, 1374, 820);
+		setBounds(220, 56, 1374, 400);
 		setLayout(null);
 
-		saveLbl = new JLabel("Edit Apply");
+		saveLbl = new JLabel("存檔");
 		saveLbl.setFont(new Font("Arial", Font.BOLD, 22));
 		saveLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		saveLbl.setForeground(Color.BLACK);
 		saveLbl.setBackground(Color.ORANGE);
-		saveLbl.setBounds(0, 636, 200, 83);
+		saveLbl.setBounds(0, 320, 200, 80);
 		saveLbl.setOpaque(true);
 		add(saveLbl);
 		saveLbl.addMouseListener(new EventListener());
 
-		resetLbl = new JLabel("Reset Apply");
+		resetLbl = new JLabel("重設");
 		resetLbl.setFont(new Font("Arial", Font.BOLD, 22));
 		resetLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		resetLbl.setForeground(Color.BLACK);
 		resetLbl.setBackground(Color.ORANGE);
-		resetLbl.setBounds(0, 550, 200, 83);
+		resetLbl.setBounds(0, 220, 200, 80);
 		resetLbl.setOpaque(true);
 		add(resetLbl);
 		resetLbl.addMouseListener(new EventListener());
@@ -55,8 +55,8 @@ public class DrumPanel extends JPanel {
 
 		drumNotePanel = new JPanel();
 		drumNotePanel.setBackground(Color.DARK_GRAY);
-		drumNotePanel.setBounds(0, 0, converter.getMusic().getMadi()*60*8 + 20, 820);
-		drumNotePanel.setPreferredSize(new Dimension(converter.getMusic().getMadi()*60*8 + 20, 820));
+		drumNotePanel.setBounds(0, 0, converter.getMusic().getMadi()*60*8 + 20, 230);
+		drumNotePanel.setPreferredSize(new Dimension(converter.getMusic().getMadi()*60*8 + 20, 230));
 		drumNotePanel.setLayout(null);
 
 		initDrumNote(8*converter.getMusic().getMadi());
@@ -65,7 +65,7 @@ public class DrumPanel extends JPanel {
 		drumNotePanel.repaint();
 		JScrollPane scrollPane = new JScrollPane(drumNotePanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(200, 0, 1174, 820);
+		scrollPane.setBounds(200, 0, 1180, 230);
 		add(scrollPane);
 	}
 
@@ -160,7 +160,7 @@ public class DrumPanel extends JPanel {
 			if(e.getSource()==saveLbl) {
 				converter.getMusic().setDrumNote(guiToString());
 				converter.musicToDrumArray();
-				JOptionPane.showMessageDialog(null, "Edit Success");
+				JOptionPane.showMessageDialog(null, "存檔成功");
 			}
 			else if(e.getSource()==resetLbl){
 				for (int i = 0; i < 3; i++) {
@@ -168,6 +168,9 @@ public class DrumPanel extends JPanel {
 						note.get(i).get(j).setCurrentValue(0);
 					}
 				}
+				converter.getMusic().setDrumNote(guiToString());
+				converter.musicToDrumArray();
+				JOptionPane.showMessageDialog(null, "重設成功");
 			}
 		}
 	}

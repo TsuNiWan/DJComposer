@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +31,9 @@ public class AudioRecorderPanel extends JPanel {
         recorder = new AudioRecorder();
         setLayout(new GridLayout(6, 1));
 
-        bar = new JLabel("record");
+        bar = new JLabel("錄音");
+        bar.setFont(new Font("Calibri", Font.PLAIN, 32));
+        bar.setBorder(new EmptyBorder(10, 10, 20, 10));
         add(bar);
 
         recordLabel = new JLabel("錄音選項");
@@ -41,6 +44,7 @@ public class AudioRecorderPanel extends JPanel {
             recorderButton[i] = new JButton(recorderButtonText[i]);
             record.add(recorderButton[i]);
             recorderButton[i].addActionListener(new MyListener());
+            if (i > 0) recorderButton[i].setEnabled(false);
         }
         add(record);
 
@@ -52,6 +56,7 @@ public class AudioRecorderPanel extends JPanel {
             playerButton[i] = new JButton(playerButtonText[i]);
             player.add(playerButton[i]);
             playerButton[i].addActionListener(new MyListener());
+            playerButton[i].setEnabled(false);
         }
         add(player);
 
@@ -71,31 +76,36 @@ public class AudioRecorderPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == recorderButton[0]) {
                 System.out.println("R1");
-                recorder.capture();
+                recorderButton[0].setEnabled(false);
+                recorderButton[1].setEnabled(true);
+                recorderButton[2].setEnabled(false);
+                recorderButton[3].setEnabled(true);
+                //recorder.capture();
             } else if (e.getSource() == recorderButton[1]) {
+                recorderButton[1].setEnabled(false);
                 System.out.println("R2");
-                recorder.pauseRecord();
+                //recorder.pauseRecord();
             } else if (e.getSource() == recorderButton[2]) {
                 System.out.println("R3");
-                recorder.resumeRecord();
+                //recorder.resumeRecord();
             } else if (e.getSource() == recorderButton[3]) {
                 System.out.println("R4");
-                recorder.stopRecord();
+                //recorder.stopRecord();
             } else if (e.getSource() == playerButton[0]) {
                 System.out.println("P1");
-                recorder.play();
+                //recorder.play();
             } else if (e.getSource() == playerButton[1]) {
                 System.out.println("P2");
-                recorder.pausePlay();
+                //recorder.pausePlay();
             } else if (e.getSource() == playerButton[2]) {
                 System.out.println("P3");
-                recorder.resumePlay();
+                //recorder.resumePlay();
             } else if (e.getSource() == playerButton[3]) {
                 System.out.println("P4");
-                recorder.stopPlay();
+                //recorder.stopPlay();
             } else if (e.getSource() == saveFile) {
                 System.out.println("File " + fileName.getText() + " Save");
-                recorder.save(fileName.getText());
+                //recorder.save(fileName.getText());
             }
         }
     }
