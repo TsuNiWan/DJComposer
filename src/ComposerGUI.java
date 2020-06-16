@@ -15,19 +15,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.table.DefaultTableModel;
 
 import com.google.gson.Gson;
 
 public class ComposerGUI extends JFrame{
     protected static final String String = null;
     private JPanel contentPane;
-    private JTable table;
-    private String username;
-    private JPanel gui;
     private MusicConverter converter;
     private JPanel panelMain;
-    private DefaultTableModel tableModel;
     private JList list;
     private DefaultListModel listModel;
     private MusicPlayFrame playMusicBt;
@@ -47,16 +42,11 @@ public class ComposerGUI extends JFrame{
     }
 
     public ComposerGUI() {
-        this(null);
-    }
-
-    public ComposerGUI(String username) {
 
         panelMain = new JPanel();
         getContentPane().add(panelMain);
 
-        this.username = username;
-        setTitle("MusicMaker");
+        setTitle("DJComposer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1600, 920);
 
