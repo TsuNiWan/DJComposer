@@ -12,8 +12,8 @@ public class MusicMakerPanel extends JPanel {
         bar = new JLabel("music maker");
         add(bar);
 
-        list = new JPanel(new GridLayout(1, 6));
-        test = new TrackPanel[6];
+        list = new JPanel(new GridLayout(2, 6));
+        test = new TrackPanel[12];
         for (TrackPanel tp : test) {
             tp = new TrackPanel();
             list.add(tp);
