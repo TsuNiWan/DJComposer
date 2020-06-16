@@ -4,11 +4,12 @@ import javax.swing.JLabel;
 public class pianoNoteLabel extends JLabel{
     private int x,y,noteIndex,noteLen;
     private boolean activate;
-    private ImageIcon defaultImg=new ImageIcon("Images/noteNotSelect.png");
-    private ImageIcon beginImg=new ImageIcon("Images/noteBegin.png");
-    private ImageIcon midImg=new ImageIcon("Images/noteMid.png");
-    private ImageIcon endImg=new ImageIcon("Images/noteEnd.png");
-    private ImageIcon singleNote=new ImageIcon("Images/noteSingle.png");
+
+    private ImageIcon defaultImg=new ImageIcon(getClass().getResource("noteNotSelect.png"));
+    private ImageIcon beginImg=new ImageIcon(getClass().getResource("noteBegin.png"));
+    private ImageIcon midImg=new ImageIcon(getClass().getResource("noteMid.png"));
+    private ImageIcon endImg=new ImageIcon(getClass().getResource("noteEnd.png"));
+    private ImageIcon singleNote=new ImageIcon(getClass().getResource("noteSingle.png"));
 
 
     public pianoNoteLabel(int x,int y) {

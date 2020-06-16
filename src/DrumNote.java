@@ -11,17 +11,13 @@ public class DrumNote extends JLabel{
 	private int x,y;
 	ArrayList<JLabel> lbNums;
 	
-	private ImageIcon notSelected = new ImageIcon("Images/drumNoteNotSelected.png");
-	private ImageIcon selected = new ImageIcon("Images/drumNoteSelected.png");
-	
 	public DrumNote(int x,int y,ArrayList<JLabel> lbNums) {
 		Border border = BorderFactory.createLineBorder(Color.darkGray, 3);
 
 		this.x = x;
 		this.y = y;
 		this.lbNums = lbNums;
-		
-		//setIcon(notSelected);
+
 		setOpaque(true);
 		setBackground(Color.lightGray);
 		setBorder(border);
@@ -36,10 +32,8 @@ public class DrumNote extends JLabel{
 	public void setCurrentValue(int currentValue) {
 		this.currentValue = currentValue;
 		if(currentValue==1) {
-			//setIcon(selected);
 			setBackground(Color.cyan);
 		}else {
-			//setIcon(notSelected);
 			setBackground(Color.lightGray);
 		}
 	}
@@ -54,11 +48,9 @@ public class DrumNote extends JLabel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if(currentValue == 0) {
-				//setIcon(selected);
 				setBackground(Color.cyan);
 				currentValue = 1;
 			}else {
-				//setIcon(notSelected);
 				setBackground(Color.lightGray);
 				currentValue = 0;
 			}

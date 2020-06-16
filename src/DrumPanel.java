@@ -46,7 +46,7 @@ public class DrumPanel extends JPanel {
 		add(resetLbl);
 		resetLbl.addMouseListener(new EventListener());
 
-		JLabel drumImg = new JLabel(new ImageIcon("Images/drum.png"));
+		JLabel drumImg = new JLabel(new ImageIcon(getClass().getResource("drum.png")));
 		drumImg.setLocation(0, 10);
 		drumImg.setSize(200, 200);
 		add(drumImg);

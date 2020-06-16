@@ -25,31 +25,28 @@ public class newFileFrame extends JFrame{
         getContentPane().setBackground(Color.DARK_GRAY);
         getContentPane().setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("檔名 : ");
-        //lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JLabel lblNewLabel = new JLabel("檔案名稱 : ");
         lblNewLabel.setForeground(Color.WHITE);
         lblNewLabel.setBounds(12, 10, 92, 21);
         getContentPane().add(lblNewLabel);
 
         textField = new JTextField();
-        //textField.setFont(new Font("Arial", Font.BOLD, 12));
         textField.setHorizontalAlignment(SwingConstants.LEFT);
         textField.setBounds(96, 10, 324, 21);
         getContentPane().add(textField);
         textField.setColumns(10);
 
-        JButton btnNewButton = new JButton("產生檔案");
+        JButton btnNewButton = new JButton("建立檔案");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newFile(textField.getText() + ".music");
                 listModel.addElement(textField.getText() + ".music");
-                JOptionPane.showMessageDialog(null, "新增成功");
+                JOptionPane.showMessageDialog(null, "Apply Success");
                 dispose();
             }
         });
         btnNewButton.setForeground(Color.BLACK);
         btnNewButton.setBackground(Color.WHITE);
-        //btnNewButton.setFont(new Font("Arial", Font.BOLD, 14));
         btnNewButton.setBounds(272, 41, 148, 23);
         getContentPane().add(btnNewButton);
         setVisible(true);
