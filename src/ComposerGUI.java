@@ -420,7 +420,10 @@ public class ComposerGUI extends JFrame{
         String result = gson.toJson(new Music(fileName, 1, 8, 120, "V0 I[piano] Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri Ri", "................................@................................@................................"));
 
         try {
-            OutputStream output = new FileOutputStream(new File("audioCompose/" + fileName));
+            File filePath = new File("audioCompose");
+            if(!filePath.exists())
+                filePath.mkdir();
+            OutputStream output = new FileOutputStream(new File(filePath.getPath()+"/" + fileName));
             byte[] by = result.getBytes();
             output.write(by);
         } catch (Exception e) {

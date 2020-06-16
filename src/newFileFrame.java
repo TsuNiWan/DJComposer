@@ -63,7 +63,10 @@ public class newFileFrame extends JFrame{
                 "................................@................................@................................"));
         System.out.println(result);
         try {
-            OutputStream output = new FileOutputStream(new File("audioCompose/" + fileName));
+            File filePath = new File("audioCompose");
+            if(!filePath.exists())
+                filePath.mkdir();
+            OutputStream output = new FileOutputStream(new File(filePath.getPath()+"/" + fileName));
             byte[] by = result.getBytes();
             output.write(by);
         } catch (Exception e) {
