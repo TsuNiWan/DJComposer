@@ -4,7 +4,7 @@ import java.awt.*;
 public class MusicMakerPanel extends JPanel {
     JLabel bar;
     JScrollPane dashboard;
-    TrackPanel[] test;
+    DrumNotePanel[] test;
     JPanel list;
 
     public MusicMakerPanel() {
@@ -16,9 +16,9 @@ public class MusicMakerPanel extends JPanel {
 
         list = new JPanel(new GridLayout(4, 60));
         list.setPreferredSize(new Dimension( 1000,300));
-        test = new TrackPanel[60];
-        for (TrackPanel tp : test) {
-            tp = new TrackPanel();
+        test = new DrumNotePanel[60];
+        for (DrumNotePanel tp : test) {
+            tp = new DrumNotePanel();
             list.add(tp);
         }
         dashboard = new JScrollPane(list);
