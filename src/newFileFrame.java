@@ -47,8 +47,8 @@ public class newFileFrame extends JFrame{
                 dispose();
             }
         });
-        btnNewButton.setForeground(Color.WHITE);
-        btnNewButton.setBackground(Color.ORANGE);
+        btnNewButton.setForeground(Color.BLACK);
+        btnNewButton.setBackground(Color.WHITE);
         btnNewButton.setFont(new Font("Arial", Font.BOLD, 14));
         btnNewButton.setBounds(272, 41, 148, 23);
         getContentPane().add(btnNewButton);
