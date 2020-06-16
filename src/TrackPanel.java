@@ -15,7 +15,7 @@ public class TrackPanel extends JLabel{
         // set the border of this component
         setBackground(Color.lightGray);
         setBorder(border);
-        setSize(60,60);
+        setSize(100,100);
         addMouseListener(new EventListener());
     }
 

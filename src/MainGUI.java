@@ -16,7 +16,7 @@ public class MainGUI extends JFrame {
         super("DJcomposer");
         setLayout(new BorderLayout());
 
-        tabBar = new JPanel(new GridLayout(3, 1));
+        tabBar = new JPanel(new GridLayout(8, 1));
         for (int i = 0; i < tabButton.length; i++) {
             tabButton[i] = new JButton(tabButtonText[i]);
             tabBar.add(tabButton[i]);
