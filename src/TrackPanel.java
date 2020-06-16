@@ -4,18 +4,17 @@ import javax.swing.border.Border;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class TrackPanel extends JLabel{
+public class TrackPanel extends JPanel{
     private boolean activate = false;
 
     public TrackPanel(){
-        super("");
         setOpaque(true);
         Border border = BorderFactory.createLineBorder(Color.darkGray, 3);
 
         // set the border of this component
         setBackground(Color.lightGray);
         setBorder(border);
-        setSize(100,100);
+        //setSize(200,200);
         addMouseListener(new EventListener());
     }
 
