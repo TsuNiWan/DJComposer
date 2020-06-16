@@ -27,6 +27,7 @@ public class ComposerGUI extends JFrame{
     private JList list;
     private DefaultListModel listModel;
     private MusicPlayFrame playMusicBt;
+    private AudioRecorder recorder;
 
     public static void main(String[] args) {
 
@@ -45,6 +46,7 @@ public class ComposerGUI extends JFrame{
     public ComposerGUI() {
         super("DJComposer");
 
+        recorder = new AudioRecorder();
         Border border = BorderFactory.createLineBorder(Color.gray, 3);
 
         panelMain = new JPanel();
@@ -272,7 +274,7 @@ public class ComposerGUI extends JFrame{
         panelTop.add(lblBar);
 
         JPanel panelFile = new JPanel();
-        panelFile.setBounds(0, 0, 208, 500);
+        panelFile.setBounds(0, 0, 208, 400);
         contentPane.add(panelFile);
         panelFile.setLayout(null);
 
@@ -288,7 +290,7 @@ public class ComposerGUI extends JFrame{
         list.setFont(new Font("Arial", Font.BOLD, 18));
         list.setBorder(border);
         list.setBackground(Color.DARK_GRAY);
-        list.setBounds(5, 5, 198, 490);
+        list.setBounds(5, 5, 198, 390);
         panelFile.add(list);
         list.addMouseListener(new MouseListener() {
 
@@ -328,6 +330,11 @@ public class ComposerGUI extends JFrame{
                 }
             }
         });
+
+        JPanel recorder = new JPanel();
+        recorder.setBounds(0, 400, 208, 200);
+        contentPane.add(recorder);
+        recorder.setLayout(null);
 
         setVisible(true);
     }
