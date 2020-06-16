@@ -36,6 +36,9 @@ public class ComposerGUI extends JFrame{
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
+                    File filePath = new File("audioCompose");
+                    if(!filePath.exists())
+                        filePath.mkdir();
                     ComposerGUI frame = new ComposerGUI();
 
                 } catch (Exception e) {
