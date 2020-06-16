@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DJComposer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DJComposer_jar</output-path>
+    <root id="archive" name="DJComposer.jar">
+      <element id="module-output" name="DJComposer" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gson-2.8.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jfugue-5.0.9.jar" path-in-jar="/" />
+      <element id="library" level="project" name="libs" />
+    </root>
+  </artifact>
+</component>
