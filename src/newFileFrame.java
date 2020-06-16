@@ -41,7 +41,7 @@ public class newFileFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 newFile(textField.getText() + ".music");
                 listModel.addElement(textField.getText() + ".music");
-                JOptionPane.showMessageDialog(null, "Apply Success");
+                JOptionPane.showMessageDialog(null, "新增成功");
                 dispose();
             }
         });
