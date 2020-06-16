@@ -107,7 +107,6 @@ public class TrackPanel extends JPanel{
         lblSave.setHorizontalAlignment(SwingConstants.CENTER);
         lblSave.setBackground(new Color(0, 128, 128));
         lblSave.setForeground(Color.WHITE);
-        lblSave.setFont(new Font("Arial", Font.BOLD, 18));
         lblSave.setBounds(720, 0, 200, 42);
         lblSave.setOpaque(true);
         add(lblSave);
