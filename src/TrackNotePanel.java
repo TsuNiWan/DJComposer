@@ -33,13 +33,12 @@ public class TrackNotePanel extends JPanel{
         this.instName = instName;
         this.duration = comboBoxDuration;
         trlb = new ArrayList<pianoNoteLabel>();
-        setBounds(0, 0, 2000, 1700);
-        setPreferredSize(new Dimension(2000, 1700));
+        setBounds(0, 0, 2000, 1800);
+        setPreferredSize(new Dimension(2000, 1800));
         setLayout(null);
 
         makeNote(converter.getMusic().getMadi());
         stringToNote();
-
     }
 
     public void stringToNote() {
@@ -188,7 +187,6 @@ public class TrackNotePanel extends JPanel{
                 }
             }
         }
-        // �̱��� ��Ʈ �о����
 
         for (int i = 0; i < tem.length; i++) {
             if (tem[i].equals("")) {
@@ -209,7 +207,6 @@ public class TrackNotePanel extends JPanel{
                 tem[i + 1] = ".";
             }
         }
-        // �̱��� ��迭 ó��
 
         for (int i = 0; i < tem.length; i++) {
             result = result + " " + tem[i];

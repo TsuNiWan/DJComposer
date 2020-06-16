@@ -23,7 +23,7 @@ public class DrumNote extends JLabel{
 		
 		//setIcon(notSelected);
 		setOpaque(true);
-		setBackground(Color.cyan);
+		setBackground(Color.lightGray);
 		setBorder(border);
 		setBounds(x, y, 60, 60);
 		setSize(60,60);

@@ -25,7 +25,7 @@ public class DrumPanel extends JPanel {
 	public DrumPanel(MusicConverter converter) {
 		this.converter = converter;
 		setBackground(Color.DARK_GRAY);
-		setBounds(220, 56, 1374, 400);
+		setBounds(220, 56, 1600, 400);
 		setLayout(null);
 
 		saveLbl = new JLabel("存檔");
@@ -65,7 +65,7 @@ public class DrumPanel extends JPanel {
 		drumNotePanel.repaint();
 		JScrollPane scrollPane = new JScrollPane(drumNotePanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(200, 0, 1180, 230);
+		scrollPane.setBounds(200, 0, 720, 230);
 		add(scrollPane);
 	}
 

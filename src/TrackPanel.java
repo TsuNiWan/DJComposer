@@ -58,9 +58,9 @@ public class TrackPanel extends JPanel{
         mainFrame.setLayout(null);
 
         JScrollPane trackMainPanel = new JScrollPane(mainFrame);
-        trackMainPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        trackMainPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         trackMainPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        trackMainPanel.setBounds(0, 43, 1374, 757);
+        trackMainPanel.setBounds(0, 43, 920, 380);
 
         JPanel pianoPanel = new JPanel();
         pianoPanel.setBounds(0, 0, 87, 980);
@@ -76,12 +76,12 @@ public class TrackPanel extends JPanel{
         lbFocusInfo.setBounds(403, 0, 175, 33);
         add(lbFocusInfo);
 
-        JPanel notePanel = new TrackNotePanel(cmbBakja, instName, selectedIndex, converter,piano, lbNums,lbFocusInfo);
+        JPanel notePanel = new TrackNotePanel(cmbBakja, instName, selectedIndex, converter, piano, lbNums, lbFocusInfo);
 
         JScrollPane noteScrollPanel = new JScrollPane(notePanel);
         noteScrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         noteScrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        noteScrollPanel.setBounds(87, 0, 1268, 980);
+        noteScrollPanel.setBounds(87, 0, 1350, 980);
         mainFrame.add(noteScrollPanel);
 
         JPanel panel = new JPanel();
@@ -103,12 +103,12 @@ public class TrackPanel extends JPanel{
 
         add(trackMainPanel);
 
-        JLabel lblSave = new JLabel("Edit Apply");
+        JLabel lblSave = new JLabel("存檔");
         lblSave.setHorizontalAlignment(SwingConstants.CENTER);
         lblSave.setBackground(new Color(0, 128, 128));
         lblSave.setForeground(Color.WHITE);
         lblSave.setFont(new Font("Arial", Font.BOLD, 18));
-        lblSave.setBounds(1050, 0, 200, 42);
+        lblSave.setBounds(720, 0, 200, 42);
         lblSave.setOpaque(true);
         add(lblSave);
 

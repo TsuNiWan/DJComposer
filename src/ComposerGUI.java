@@ -56,11 +56,11 @@ public class ComposerGUI extends JFrame{
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
-        JMenu record = new JMenu("VoiceRecord");
-        menuBar.add(record);
-
         JMenu mnFile = new JMenu("Track File");
         menuBar.add(mnFile);
+
+        JMenu record = new JMenu("VoiceRecord");
+        menuBar.add(record);
 
 
         JMenuItem mntmNew = new JMenuItem("NEW");
@@ -112,7 +112,7 @@ public class ComposerGUI extends JFrame{
 
         JPanel panelTop = new JPanel();
         panelTop.setBackground(SystemColor.controlDkShadow);
-        panelTop.setBounds(220, 0, 1374, 46);
+        panelTop.setBounds(220, 0, 1150, 46);
         panelTop.setOpaque(true);
         panelTop.setBackground(Color.gray);
         contentPane.add(panelTop);
@@ -272,7 +272,6 @@ public class ComposerGUI extends JFrame{
         panelTop.add(lblBar);
 
         JPanel panelFile = new JPanel();
-        //panelFile.setBackground(Color.blue);
         panelFile.setBounds(0, 0, 208, 500);
         contentPane.add(panelFile);
         panelFile.setLayout(null);
@@ -286,7 +285,7 @@ public class ComposerGUI extends JFrame{
 
         list = new JList(listModel);
         list.setForeground(Color.WHITE);
-        list.setFont(new Font("Arial", Font.BOLD, 12));
+        list.setFont(new Font("Arial", Font.BOLD, 18));
         list.setBorder(border);
         list.setBackground(Color.DARK_GRAY);
         list.setBounds(5, 5, 198, 490);
