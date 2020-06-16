@@ -95,7 +95,7 @@ public class ComposerGUI extends JFrame{
             }
         });
 
-        JMenuItem mntmExit = new JMenuItem("關閉檔案");
+        JMenuItem mntmExit = new JMenuItem("關閉視窗");
         mnFile.add(mntmExit);
         mntmExit.addActionListener(new ActionListener() {
 
