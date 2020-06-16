@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 public class ComposerGUI extends JFrame{
     private ImageIcon play = new ImageIcon(new ImageIcon(getClass().getResource("play-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
     private ImageIcon stop = new ImageIcon(new ImageIcon(getClass().getResource("stop-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
+    private ImageIcon mic = new ImageIcon(new ImageIcon(getClass().getResource("microphone-solid.png")).getImage().getScaledInstance(22, 32, Image.SCALE_DEFAULT));
+    private ImageIcon pause = new ImageIcon(new ImageIcon(getClass().getResource("pause-solid.png")).getImage().getScaledInstance(28, 32, Image.SCALE_DEFAULT));
 
     protected static final String String = null;
     private JPanel contentPane;
@@ -58,14 +60,10 @@ public class ComposerGUI extends JFrame{
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
-        JMenu mnFile = new JMenu("Track File");
+        JMenu mnFile = new JMenu("檔案管理");
         menuBar.add(mnFile);
 
-        JMenu record = new JMenu("VoiceRecord");
-        menuBar.add(record);
-
-
-        JMenuItem mntmNew = new JMenuItem("NEW");
+        JMenuItem mntmNew = new JMenuItem("新建檔案");
         mnFile.add(mntmNew);
         mntmNew.addActionListener(new ActionListener() {
             @Override
@@ -74,7 +72,7 @@ public class ComposerGUI extends JFrame{
             }
         });
 
-        JMenuItem mntmSave = new JMenuItem("SAVE");
+        JMenuItem mntmSave = new JMenuItem("儲存檔案");
         mnFile.add(mntmSave);
         mntmSave.addActionListener(new ActionListener() {
             @Override
@@ -84,7 +82,7 @@ public class ComposerGUI extends JFrame{
             }
         });
 
-        JMenuItem mntmDelete = new JMenuItem("DELETE");
+        JMenuItem mntmDelete = new JMenuItem("刪除檔案");
         mnFile.add(mntmDelete);
         mntmDelete.addActionListener(new ActionListener() {
             @Override
@@ -95,7 +93,7 @@ public class ComposerGUI extends JFrame{
             }
         });
 
-        JMenuItem mntmExit = new JMenuItem("EXIT");
+        JMenuItem mntmExit = new JMenuItem("關閉檔案");
         mnFile.add(mntmExit);
         mntmExit.addActionListener(new ActionListener() {
 
@@ -104,7 +102,6 @@ public class ComposerGUI extends JFrame{
                 dispose();
             }
         });
-
 
         contentPane = new JPanel();
         contentPane.setBackground(Color.DARK_GRAY);
@@ -331,10 +328,74 @@ public class ComposerGUI extends JFrame{
             }
         });
 
-        JPanel recorder = new JPanel();
-        recorder.setBounds(0, 400, 208, 200);
-        contentPane.add(recorder);
-        recorder.setLayout(null);
+        JPanel recorderPanel = new JPanel();
+        recorderPanel.setBounds(0, 400, 208, 200);
+        recorderPanel.setForeground(Color.white);
+        recorderPanel.setBackground(Color.lightGray);
+        contentPane.add(recorderPanel);
+        recorderPanel.setLayout(null);
+
+        JLabel recorderLabel = new JLabel("錄音介面");
+        recorderLabel.setBounds(5, 5, 198, 20);
+        recorderPanel.add(recorderLabel);
+
+        JButton recorderBtnStart = new JButton(mic);
+        recorderBtnStart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                recorder.capture();
+            }
+        });
+        recorderBtnStart.setForeground(Color.BLACK);
+        recorderBtnStart.setBackground(Color.WHITE);
+        recorderBtnStart.setBounds(5, 25, 40, 40);
+        recorderPanel.add(recorderBtnStart);
+
+        JButton recorderBtnStop = new JButton(stop);
+        recorderBtnStop.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                recorder.stopRecord();
+            }
+        });
+        recorderBtnStop.setForeground(Color.BLACK);
+        recorderBtnStop.setBackground(Color.WHITE);
+        recorderBtnStop.setBounds(45, 25, 40, 40);
+        recorderPanel.add(recorderBtnStop);
+
+        /*
+        JButton recorderBtnPause = new JButton(pause);
+        recorderBtnPause.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                recorder.pauseRecord();
+            }
+        });
+        recorderBtnPause.setForeground(Color.BLACK);
+        recorderBtnPause.setBackground(Color.WHITE);
+        recorderBtnPause.setBounds(85, 25, 40, 40);
+        recorderPanel.add(recorderBtnPause);
+
+
+        JButton recorderBtnResume = new JButton(play);
+        recorderBtnResume.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                recorder.resumeRecord();
+            }
+        });
+        recorderBtnResume.setForeground(Color.BLACK);
+        recorderBtnResume.setBackground(Color.WHITE);
+        recorderBtnResume.setBounds(125, 25, 40, 40);
+        recorderPanel.add(recorderBtnResume);
+        */
+
+        JButton recorderBtnPlay = new JButton(play);
+        recorderBtnPlay.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                recorder.play();
+            }
+        });
+        recorderBtnPlay.setForeground(Color.BLACK);
+        recorderBtnPlay.setBackground(Color.WHITE);
+        recorderBtnPlay.setBounds(125, 25, 40, 40);
+        recorderPanel.add(recorderBtnPlay);
 
         setVisible(true);
     }

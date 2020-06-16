@@ -23,7 +23,7 @@ public class MusicConverter {
                 int instEndIndex = track[i].indexOf("]");// substring會自動-1
                 int trackNum = Integer.parseInt(track[i].charAt(0) + "");// trackNote[i]的第一個字為trackNum
                 String instrument = track[i].substring(instStartIndex, instEndIndex);// 取得樂器名稱
-                String note = track[i].substring(instEndIndex + 2);
+                String note = track[i].substring(instEndIndex + 1);
                 tracks.add(new Track(trackNum, instrument, note));
             }
         }
