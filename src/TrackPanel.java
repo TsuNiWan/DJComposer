@@ -51,7 +51,6 @@ public class TrackPanel extends JPanel{
         cmbBakja.setBounds(159, 0, 161, 33);
         add(cmbBakja);
 
-        // ----------------------
 
         JPanel mainFrame = new JPanel();
         mainFrame.setBounds(0, 0, 1350, 980);
@@ -70,7 +69,6 @@ public class TrackPanel extends JPanel{
         JLabel label = new pianoLabel(instName, piano);
         pianoPanel.add(label);
 
-        // -----------------------------------------
         JLabel lbFocusInfo = new JLabel();
         lbFocusInfo.setForeground(Color.WHITE);
         lbFocusInfo.setHorizontalAlignment(SwingConstants.LEFT);
