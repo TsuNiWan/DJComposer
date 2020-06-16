@@ -81,7 +81,7 @@ public class ComposerGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveFile();
-                JOptionPane.showMessageDialog(null, "Save Success");
+                JOptionPane.showMessageDialog(null, "儲存成功");
             }
         });
 
@@ -92,7 +92,7 @@ public class ComposerGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 deleteFile(list.getSelectedValue().toString());
                 listModel.remove(list.getSelectedIndex());
-                JOptionPane.showMessageDialog(null, "Delete Success");
+                JOptionPane.showMessageDialog(null, "刪除成功");
             }
         });
 
@@ -317,7 +317,7 @@ public class ComposerGUI extends JFrame{
                     remove(panelMain);
                     repaint();
                     revalidate();
-                    JOptionPane.showMessageDialog(null, "Load Success");
+                    JOptionPane.showMessageDialog(null, "載入成功");
                 }
             }
         });

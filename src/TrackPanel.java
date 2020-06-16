@@ -72,7 +72,6 @@ public class TrackPanel extends JPanel{
         JLabel lbFocusInfo = new JLabel();
         lbFocusInfo.setForeground(Color.WHITE);
         lbFocusInfo.setHorizontalAlignment(SwingConstants.LEFT);
-        lbFocusInfo.setFont(new Font("Arial", Font.BOLD, 22));
         lbFocusInfo.setBounds(403, 0, 175, 33);
         add(lbFocusInfo);
 
@@ -96,7 +95,7 @@ public class TrackPanel extends JPanel{
             lbNum.setForeground(Color.WHITE);
             lbNum.setBackground(Color.DARK_GRAY);
             lbNum.setOpaque(true);
-            lbNum.setFont(new Font("Arial", Font.BOLD, 10));
+            lbNum.setFont(new Font("Arial", Font.PLAIN, 10));
             panel.add(lbNum);
             lbNums.add(lbNum);
         }
@@ -107,7 +106,6 @@ public class TrackPanel extends JPanel{
         lblSave.setHorizontalAlignment(SwingConstants.CENTER);
         lblSave.setBackground(new Color(0, 128, 128));
         lblSave.setForeground(Color.WHITE);
-        lblSave.setFont(new Font("Arial", Font.BOLD, 18));
         lblSave.setBounds(720, 0, 200, 42);
         lblSave.setOpaque(true);
         add(lblSave);
@@ -132,7 +130,7 @@ public class TrackPanel extends JPanel{
                 TrackNotePanel p = (TrackNotePanel) notePanel;
                 String instSave = instName.getSelectedItem().toString();
                 String resultNote = p.noteToString();
-                JOptionPane.showMessageDialog(null, "Edit Success");
+                JOptionPane.showMessageDialog(null, "存檔成功");
                 converter.getTrack().get(selectedIndex).setNote(resultNote);
                 converter.getTrack().get(selectedIndex).setInstrument(instSave);
                 converter.saveTrackToMusic();
