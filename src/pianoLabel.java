@@ -20,7 +20,7 @@ public class pianoLabel extends JLabel {
         this.piano = piano;
         this.instName = instName;
         setBounds(0, 0, 87, 562);
-        setIcon(new ImageIcon("Images/piano.png"));
+        setIcon(new ImageIcon(getClass().getResource("piano.png")));
         whiteKeyLabel();
         blackKeyLabel();
     }

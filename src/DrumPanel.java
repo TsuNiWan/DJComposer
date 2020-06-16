@@ -29,7 +29,6 @@ public class DrumPanel extends JPanel {
 		setLayout(null);
 
 		saveLbl = new JLabel("存檔");
-		saveLbl.setFont(new Font("Arial", Font.BOLD, 22));
 		saveLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		saveLbl.setForeground(Color.BLACK);
 		saveLbl.setBackground(Color.ORANGE);
@@ -39,7 +38,6 @@ public class DrumPanel extends JPanel {
 		saveLbl.addMouseListener(new EventListener());
 
 		resetLbl = new JLabel("重設");
-		resetLbl.setFont(new Font("Arial", Font.BOLD, 22));
 		resetLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		resetLbl.setForeground(Color.BLACK);
 		resetLbl.setBackground(Color.ORANGE);
@@ -48,7 +46,7 @@ public class DrumPanel extends JPanel {
 		add(resetLbl);
 		resetLbl.addMouseListener(new EventListener());
 
-		JLabel drumImg = new JLabel(new ImageIcon("Images/drum.png"));
+		JLabel drumImg = new JLabel(new ImageIcon(getClass().getResource("drum.png")));
 		drumImg.setLocation(0, 10);
 		drumImg.setSize(200, 200);
 		add(drumImg);

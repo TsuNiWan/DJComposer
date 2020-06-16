@@ -25,20 +25,18 @@ public class newFileFrame extends JFrame{
         getContentPane().setBackground(Color.DARK_GRAY);
         getContentPane().setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("FileName : ");
-        lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JLabel lblNewLabel = new JLabel("檔案名稱 : ");
         lblNewLabel.setForeground(Color.WHITE);
         lblNewLabel.setBounds(12, 10, 92, 21);
         getContentPane().add(lblNewLabel);
 
         textField = new JTextField();
-        textField.setFont(new Font("Arial", Font.BOLD, 12));
         textField.setHorizontalAlignment(SwingConstants.LEFT);
         textField.setBounds(96, 10, 324, 21);
         getContentPane().add(textField);
         textField.setColumns(10);
 
-        JButton btnNewButton = new JButton("Make File");
+        JButton btnNewButton = new JButton("建立檔案");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newFile(textField.getText() + ".music");
@@ -49,7 +47,6 @@ public class newFileFrame extends JFrame{
         });
         btnNewButton.setForeground(Color.BLACK);
         btnNewButton.setBackground(Color.WHITE);
-        btnNewButton.setFont(new Font("Arial", Font.BOLD, 14));
         btnNewButton.setBounds(272, 41, 148, 23);
         getContentPane().add(btnNewButton);
         setVisible(true);

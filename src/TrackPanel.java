@@ -132,7 +132,7 @@ public class TrackPanel extends JPanel{
                 TrackNotePanel p = (TrackNotePanel) notePanel;
                 String instSave = instName.getSelectedItem().toString();
                 String resultNote = p.noteToString();
-                JOptionPane.showMessageDialog(null, "Edit Success");
+                JOptionPane.showMessageDialog(null, "存檔成功");
                 converter.getTrack().get(selectedIndex).setNote(resultNote);
                 converter.getTrack().get(selectedIndex).setInstrument(instSave);
                 converter.saveTrackToMusic();
