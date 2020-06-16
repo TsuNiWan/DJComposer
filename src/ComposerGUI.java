@@ -53,7 +53,7 @@ public class ComposerGUI extends JFrame{
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
-        JMenu record = new JMenu("Record");
+        JMenu record = new JMenu("VoiceRecord");
         menuBar.add(record);
 
         JMenu mnFile = new JMenu("Track File");
