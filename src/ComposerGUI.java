@@ -147,7 +147,6 @@ public class ComposerGUI extends JFrame{
 
         JSpinner spinnerBPM = new JSpinner();
         spinnerBPM.setModel(new SpinnerNumberModel(new Integer(120), null, null, new Integer(1)));
-        spinnerBPM.setFont(new Font("Calibri", Font.BOLD, 24));
         spinnerBPM.setForeground(Color.WHITE);
         spinnerBPM.setBackground(Color.DARK_GRAY);
         spinnerBPM.setBounds(147, 0, 132, 46);
@@ -164,7 +163,6 @@ public class ComposerGUI extends JFrame{
         });
 
         JComboBox cmbTrack = new JComboBox();
-        cmbTrack.setFont(new Font("Calibri", Font.BOLD, 17));
         cmbTrack.setBounds(320, 0, 105, 46);
         panelTop.add(cmbTrack);
 
@@ -182,7 +180,6 @@ public class ComposerGUI extends JFrame{
 
             }
         });
-        btnAddTrack.setFont(new Font("Calibri", Font.BOLD, 14));
         btnAddTrack.setForeground(Color.BLACK);
         btnAddTrack.setBackground(Color.WHITE);
         btnAddTrack.setBounds(530, -1, 100, 46);
@@ -206,20 +203,17 @@ public class ComposerGUI extends JFrame{
             }
         });
         btnRemovetrack.setForeground(Color.BLACK);
-        btnRemovetrack.setFont(new Font("Calibri", Font.BOLD, 14));
         btnRemovetrack.setBackground(Color.WHITE);
         btnRemovetrack.setBounds(630, -1, 100, 46);
         panelTop.add(btnRemovetrack);
 
         JLabel lblBpm = new JLabel("BPM");
-        lblBpm.setFont(new Font("Calibri", Font.BOLD, 12));
         lblBpm.setForeground(Color.WHITE);
         lblBpm.setBounds(107, 12, 39, 21);
         panelTop.add(lblBpm);
 
         JLabel lblTrack = new JLabel("音軌");
         lblTrack.setForeground(Color.WHITE);
-        lblTrack.setFont(new Font("Calibri", Font.BOLD, 12));
         lblTrack.setBounds(290, 12, 39, 21);
         panelTop.add(lblTrack);
 
@@ -245,14 +239,12 @@ public class ComposerGUI extends JFrame{
             }
         });
         btnLoadTrack.setForeground(Color.BLACK);
-        btnLoadTrack.setFont(new Font("Calibri", Font.BOLD, 14));
         btnLoadTrack.setBackground(Color.WHITE);
         btnLoadTrack.setBounds(430, -1, 100, 46);
         panelTop.add(btnLoadTrack);
 
         JSpinner spinnerBar = new JSpinner();
         spinnerBar.setForeground(Color.WHITE);
-        spinnerBar.setFont(new Font("Calibri", Font.BOLD, 24));
         spinnerBar.setBackground(Color.DARK_GRAY);
         spinnerBar.setBounds(770, 0, 132, 46);
         panelTop.add(spinnerBar);
@@ -266,7 +258,6 @@ public class ComposerGUI extends JFrame{
 
         JLabel lblBar = new JLabel("Bar");
         lblBar.setForeground(Color.WHITE);
-        lblBar.setFont(new Font("Calibri", Font.BOLD, 12));
         lblBar.setBounds(740, 12, 39, 21);
         panelTop.add(lblBar);
 
@@ -284,7 +275,7 @@ public class ComposerGUI extends JFrame{
 
         list = new JList(listModel);
         list.setForeground(Color.WHITE);
-        list.setFont(new Font("Calibri", Font.BOLD, 18));
+        list.setFont(new Font("Calibri", Font.PLAIN, 18));
         list.setBorder(border);
         list.setBackground(Color.DARK_GRAY);
         list.setBounds(5, 5, 198, 390);
