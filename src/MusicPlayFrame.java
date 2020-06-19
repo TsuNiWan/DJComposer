@@ -37,7 +37,8 @@ public class MusicPlayFrame extends JFrame {
             try {
                 playMusic();
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("Currently no track playing");
+                //e.printStackTrace();
             }
 
         }
