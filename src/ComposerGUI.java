@@ -31,6 +31,8 @@ public class ComposerGUI extends JFrame{
     private MusicPlayFrame playMusicBt;
     private AudioRecorder recorder;
 
+    boolean isRecording = true;
+
     public static void main(String[] args) {
 
         EventQueue.invokeLater(new Runnable() {
@@ -128,6 +130,7 @@ public class ComposerGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 playMusicBt = new MusicPlayFrame(converter);
+                recorder.play();
             }
         });
 
@@ -143,6 +146,7 @@ public class ComposerGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 playMusicBt.stop();
+                recorder.stopPlay();
             }
         });
         panelTop.add(btnStop);
@@ -332,10 +336,31 @@ public class ComposerGUI extends JFrame{
         recorderLabel.setBounds(5, 5, 198, 20);
         recorderPanel.add(recorderLabel);
 
+        JButton recorderBtnControl = new JButton(pause);
+        recorderBtnControl.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (isRecording) {
+                    recorderBtnControl.setIcon(play);
+                    recorder.pauseRecord();
+                } else {
+                    recorderBtnControl.setIcon(pause);
+                    recorder.resumeRecord();
+                }
+                isRecording = ! isRecording;
+            }
+        });
+        recorderBtnControl.setForeground(Color.BLACK);
+        recorderBtnControl.setBackground(Color.WHITE);
+        recorderBtnControl.setEnabled(false);
+        recorderBtnControl.setBounds(50, 25, 40, 40);
+        recorderPanel.add(recorderBtnControl);
+
         JButton recorderBtnStart = new JButton(mic);
         recorderBtnStart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 recorder.capture();
+                recorderBtnControl.setEnabled(true);
+                recorderBtnStart.setEnabled(false);
             }
         });
         recorderBtnStart.setForeground(Color.BLACK);
@@ -347,11 +372,16 @@ public class ComposerGUI extends JFrame{
         recorderBtnStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 recorder.stopRecord();
+                recorderBtnStart.setEnabled(true);
+                recorderBtnControl.setEnabled(false);
+                recorderBtnControl.setIcon(pause);
+                isRecording = true;
+                recorder.resumeRecord();
             }
         });
         recorderBtnStop.setForeground(Color.BLACK);
         recorderBtnStop.setBackground(Color.WHITE);
-        recorderBtnStop.setBounds(45, 25, 40, 40);
+        recorderBtnStop.setBounds(95, 25, 40, 40);
         recorderPanel.add(recorderBtnStop);
 
         /*
@@ -379,6 +409,8 @@ public class ComposerGUI extends JFrame{
         recorderPanel.add(recorderBtnResume);
         */
 
+        /*
+        錄音介面 撥放錄音按鈕
         JButton recorderBtnPlay = new JButton(play);
         recorderBtnPlay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -389,6 +421,7 @@ public class ComposerGUI extends JFrame{
         recorderBtnPlay.setBackground(Color.WHITE);
         recorderBtnPlay.setBounds(125, 25, 40, 40);
         recorderPanel.add(recorderBtnPlay);
+        */
 
         setVisible(true);
     }
