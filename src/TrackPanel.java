@@ -45,11 +45,11 @@ public class TrackPanel extends JPanel{
         instName.setBounds(0, 0, 155, 33);
         add(instName);
 
-        JComboBox cmbBakja = new JComboBox();
-        cmbBakja.setFont(new Font("Arial", Font.BOLD, 14));
-        cmbBakja.setModel(new DefaultComboBoxModel(new String[] { "1/8", "1/4", "1/2", "1" }));
-        cmbBakja.setBounds(159, 0, 161, 33);
-        add(cmbBakja);
+        JComboBox comboBoxDuration = new JComboBox();
+        comboBoxDuration.setFont(new Font("Arial", Font.BOLD, 14));
+        comboBoxDuration.setModel(new DefaultComboBoxModel(new String[] { "1/8", "1/4", "1/2", "1" }));
+        comboBoxDuration.setBounds(159, 0, 161, 33);
+        add(comboBoxDuration);
 
 
         JPanel mainFrame = new JPanel();
@@ -75,7 +75,7 @@ public class TrackPanel extends JPanel{
         lbFocusInfo.setBounds(403, 0, 175, 33);
         add(lbFocusInfo);
 
-        JPanel notePanel = new TrackNotePanel(cmbBakja, instName, selectedIndex, converter, piano, lbNums, lbFocusInfo);
+        JPanel notePanel = new TrackNotePanel(comboBoxDuration, instName, selectedIndex, converter, piano, lbNums, lbFocusInfo);
 
         JScrollPane noteScrollPanel = new JScrollPane(notePanel);
         noteScrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
