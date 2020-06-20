@@ -5,13 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 public class DrumPanel extends JPanel {
 	private MusicConverter converter;
@@ -21,9 +15,11 @@ public class DrumPanel extends JPanel {
 	private ArrayList<JLabel> lbNums;
 	private JLabel saveLbl;
 	private JLabel resetLbl;
+	private JFrame mainGUI;
 
-	public DrumPanel(MusicConverter converter) {
+	public DrumPanel(MusicConverter converter, JFrame mainGUI) {
 		this.converter = converter;
+		this.mainGUI = mainGUI;
 		setBackground(Color.DARK_GRAY);
 		setBounds(220, 56, 1600, 400);
 		setLayout(null);
@@ -158,7 +154,7 @@ public class DrumPanel extends JPanel {
 			if(e.getSource()==saveLbl) {
 				converter.getMusic().setDrumNote(guiToString());
 				converter.musicToDrumArray();
-				JOptionPane.showMessageDialog(null, "存檔成功");
+				JOptionPane.showMessageDialog(mainGUI, "存檔成功");
 			}
 			else if(e.getSource()==resetLbl){
 				for (int i = 0; i < 3; i++) {
@@ -168,7 +164,7 @@ public class DrumPanel extends JPanel {
 				}
 				converter.getMusic().setDrumNote(guiToString());
 				converter.musicToDrumArray();
-				JOptionPane.showMessageDialog(null, "重設成功");
+				JOptionPane.showMessageDialog(mainGUI, "重設成功");
 			}
 		}
 	}

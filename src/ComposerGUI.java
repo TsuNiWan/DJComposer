@@ -72,7 +72,7 @@ public class ComposerGUI extends JFrame{
         mntmNew.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new newFileFrame(listModel);
+                new newFileFrame(listModel, ComposerGUI.this);
             }
         });
 
@@ -82,7 +82,7 @@ public class ComposerGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveFile();
-                JOptionPane.showMessageDialog(null, "儲存成功");
+                JOptionPane.showMessageDialog(ComposerGUI.this, "儲存成功");
             }
         });
 
@@ -93,7 +93,7 @@ public class ComposerGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 deleteFile(list.getSelectedValue().toString());
                 listModel.remove(list.getSelectedIndex());
-                JOptionPane.showMessageDialog(null, "刪除成功");
+                JOptionPane.showMessageDialog(ComposerGUI.this, "刪除成功");
             }
         });
 
@@ -228,7 +228,7 @@ public class ComposerGUI extends JFrame{
             public void actionPerformed(ActionEvent arg0) {
                 if (cmbTrack.getSelectedItem().equals("Drum")) {
                     remove(panelMain);
-                    panelMain = new DrumPanel(converter);
+                    panelMain = new DrumPanel(converter, ComposerGUI.this);
                     getContentPane().add(panelMain);
                     repaint();
                     revalidate();
@@ -237,7 +237,7 @@ public class ComposerGUI extends JFrame{
                     repaint();
                 } else {
                     remove(panelMain);
-                    panelMain = new TrackPanel(converter, Integer.parseInt(cmbTrack.getSelectedItem().toString()));
+                    panelMain = new TrackPanel(converter, Integer.parseInt(cmbTrack.getSelectedItem().toString()),ComposerGUI.this);
                     getContentPane().add(panelMain);
                     repaint();
                     revalidate();
@@ -320,7 +320,7 @@ public class ComposerGUI extends JFrame{
                     remove(panelMain);
                     repaint();
                     revalidate();
-                    JOptionPane.showMessageDialog(null, "載入成功");
+                    JOptionPane.showMessageDialog(ComposerGUI.this, "載入成功");
                 }
             }
         });

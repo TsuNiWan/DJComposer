@@ -8,13 +8,15 @@ import java.util.ArrayList;
 
 public class TrackPanel extends JPanel{
     private MusicConverter converter;
+    private JFrame mainGUI;
     int selectedIndex;
     ArrayList<JLabel> piano = new ArrayList<JLabel>();
     ArrayList<JLabel> lbNums = new ArrayList<JLabel>();
 
-    public TrackPanel(MusicConverter converter, int selectedIndex) {
+    public TrackPanel(MusicConverter converter, int selectedIndex, JFrame mainGUI) {
         this.selectedIndex = selectedIndex;
         this.converter = converter;
+        this.mainGUI = mainGUI;
         setBackground(Color.DARK_GRAY);
         setBounds(220, 56, 1374, 820);
         setLayout(null);
@@ -130,7 +132,7 @@ public class TrackPanel extends JPanel{
                 TrackNotePanel p = (TrackNotePanel) notePanel;
                 String instSave = instName.getSelectedItem().toString();
                 String resultNote = p.noteToString();
-                JOptionPane.showMessageDialog(null, "存檔成功");
+                JOptionPane.showMessageDialog(mainGUI, "存檔成功");
                 converter.getTrack().get(selectedIndex).setNote(resultNote);
                 converter.getTrack().get(selectedIndex).setInstrument(instSave);
                 converter.saveTrackToMusic();

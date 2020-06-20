@@ -20,8 +20,10 @@ import java.awt.event.ActionEvent;
 public class newFileFrame extends JFrame{
     private JTextField textField;
 
-    public newFileFrame(DefaultListModel listModel) {
+    public newFileFrame(DefaultListModel listModel, JFrame mainGUI) {
+        //setBounds(400, 300, 442, 113);
         setSize(442, 113);
+        setLocationRelativeTo(mainGUI);
         getContentPane().setBackground(Color.DARK_GRAY);
         getContentPane().setLayout(null);
 
@@ -41,7 +43,7 @@ public class newFileFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 newFile(textField.getText() + ".music");
                 listModel.addElement(textField.getText() + ".music");
-                JOptionPane.showMessageDialog(null, "新增成功");
+                JOptionPane.showMessageDialog(newFileFrame.this, "新增成功");
                 dispose();
             }
         });
